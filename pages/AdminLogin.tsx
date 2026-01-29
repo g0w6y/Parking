@@ -23,38 +23,44 @@ const AdminLogin: React.FC<AdminLoginProps> = ({ onLogin }) => {
   };
 
   return (
-    <div className="flex-1 flex flex-col p-8 bg-slate-900 text-white overflow-y-auto">
-      <div className="mb-10 text-center">
-        <div className="w-16 h-16 bg-red-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl shadow-red-900/20">
-          <ShieldAlert size={32} />
+    <div className="flex-1 flex flex-col p-8 bg-slate-950 text-white overflow-y-auto min-h-screen">
+      <div className="mb-10 text-center mt-10">
+        <div className="w-20 h-20 bg-red-600 rounded-[2rem] flex items-center justify-center mx-auto mb-8 shadow-2xl shadow-red-900/40 transform rotate-12 transition-transform hover:rotate-0 duration-500">
+          <ShieldAlert size={40} />
         </div>
-        <h1 className="text-2xl font-bold mb-2">Admin Portal</h1>
-        <p className="text-slate-400 text-sm font-medium">Restricted Access Area</p>
+        <h1 className="text-3xl font-black mb-2 tracking-tight uppercase">Admin Core</h1>
+        <p className="text-slate-500 text-[10px] font-black uppercase tracking-[0.3em]">Identity Verification Required</p>
       </div>
 
-      <form onSubmit={handleLogin} className="space-y-6">
+      <form onSubmit={handleLogin} className="space-y-6 max-w-sm mx-auto w-full">
         <div className="space-y-4">
-          <input 
-            type="text" 
-            placeholder="Username"
-            className="w-full py-4 px-6 bg-slate-800 rounded-2xl border border-slate-700 outline-none focus:border-red-500 transition-all text-sm"
-            value={user}
-            onChange={e => setUser(e.target.value)}
-          />
-          <input 
-            type="password" 
-            placeholder="Secret Key"
-            className="w-full py-4 px-6 bg-slate-800 rounded-2xl border border-slate-700 outline-none focus:border-red-500 transition-all text-sm"
-            value={pass}
-            onChange={e => setPass(e.target.value)}
-          />
+          <div className="group">
+             <label className="text-[10px] font-black text-slate-600 uppercase mb-2 block tracking-widest ml-4">Authorized User</label>
+             <input 
+              type="text" 
+              placeholder="Username"
+              className="w-full py-5 px-8 bg-slate-900 rounded-[2rem] border border-slate-800 outline-none focus:border-red-600 focus:bg-slate-800 transition-all text-sm font-bold placeholder:text-slate-700"
+              value={user}
+              onChange={e => setUser(e.target.value)}
+            />
+          </div>
+          <div className="group">
+             <label className="text-[10px] font-black text-slate-600 uppercase mb-2 block tracking-widest ml-4">Access Key</label>
+             <input 
+              type="password" 
+              placeholder="••••••••"
+              className="w-full py-5 px-8 bg-slate-900 rounded-[2rem] border border-slate-800 outline-none focus:border-red-600 focus:bg-slate-800 transition-all text-sm font-bold placeholder:text-slate-700"
+              value={pass}
+              onChange={e => setPass(e.target.value)}
+            />
+          </div>
         </div>
 
-        {error && <p className="text-red-400 text-xs text-center font-bold">{error}</p>}
+        {error && <p className="text-red-500 text-[10px] text-center font-black uppercase tracking-widest animate-pulse">{error}</p>}
 
         <button 
           type="submit"
-          className="w-full py-5 bg-red-500 text-white rounded-2xl font-bold active:scale-[0.98] transition-all flex items-center justify-center gap-2"
+          className="w-full py-6 bg-red-600 text-white rounded-[2rem] font-black uppercase tracking-[0.2em] shadow-2xl shadow-red-900/30 active:scale-95 transition-all flex items-center justify-center gap-3"
         >
           <Lock size={18} /> Authenticate
         </button>
@@ -62,9 +68,9 @@ const AdminLogin: React.FC<AdminLoginProps> = ({ onLogin }) => {
 
       <button 
         onClick={() => window.location.hash = AppRoute.HOME}
-        className="mt-auto py-4 text-slate-500 text-sm flex items-center justify-center gap-2"
+        className="mt-12 py-4 text-slate-600 text-[10px] font-black uppercase tracking-widest flex items-center justify-center gap-2 hover:text-white transition-colors"
       >
-        <ArrowLeft size={16} /> Back to Student App
+        <ArrowLeft size={16} /> Exit Secure Portal
       </button>
     </div>
   );
