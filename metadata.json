@@ -1,0 +1,7 @@
+{
+  "name": "Garvasis Parking Log",
+  "description": "A smart college parking management system to track vehicle check-ins, resolve blocking issues, and facilitate student-tutor communication.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
